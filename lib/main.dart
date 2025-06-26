@@ -1,30 +1,36 @@
 import 'package:flutter/material.dart';
 
-void main(List<String> args) {
-  runApp(MyApp());
+void main() {
+  runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.blue.shade200,
         appBar: AppBar(
-          backgroundColor: Colors.green,
-          title: const Text('Flutter is fun!'),
+          title: const Text("new app"),
+          backgroundColor: Colors.lightBlue,
+          elevation: 1,
+          leading: Icon(Icons.menu),
+          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.logout))],
         ),
         body: Center(
           child: Container(
-            child: const Text("Hi guys!"),
-            height: 50,
-            width: 50,
+            height: 300,
+            width: 300,
+            decoration: BoxDecoration(
+              color: Colors.lightBlue,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Center(
+              child: Icon(Icons.abc_outlined, color: Colors.white, size: 128),
+            ),
           ),
         ),
       ),
