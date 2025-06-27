@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/first_page.dart';
+import 'package:myapp/pages/home.dart';
+import 'package:myapp/pages/login.dart';
+import 'package:myapp/pages/second_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,29 +15,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.blue.shade200,
-        appBar: AppBar(
-          title: const Text("new app"),
-          backgroundColor: Colors.lightBlue,
-          elevation: 1,
-          leading: Icon(Icons.menu),
-          actions: [IconButton(onPressed: () {}, icon: Icon(Icons.logout))],
-        ),
-        body: Center(
-          child: Container(
-            height: 300,
-            width: 300,
-            decoration: BoxDecoration(
-              color: Colors.lightBlue,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Center(
-              child: Icon(Icons.abc_outlined, color: Colors.white, size: 128),
-            ),
-          ),
-        ),
-      ),
+      home: Login(),
+      routes: {
+        '/home' : (context) => Home()
+      },
+      // home: Home(),
+      // routes: {
+      //   "/home": (context) => Home(),
+      //   "/firstPage": (context) => FirstPage(),
+      //   "/secondPage": (context) => SecondPage(),
+      // },
     );
   }
 }
