@@ -5,6 +5,12 @@ class FirstPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('FirstPage')));
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text("Profile"),
+        elevation: 2,
+      ),
+    );
   }
 }
