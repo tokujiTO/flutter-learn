@@ -10,24 +10,41 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final List<Widget> _pages = [
-    // Página Home - usando um widget simples para evitar recursão
-    const Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.home, size: 100, color: Colors.blue),
-          SizedBox(height: 20),
-          Text(
-            'Home Page',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-        ],
+  String userName = "";
+  late List<Widget> _pages;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Pega o nome do usuário passado como argumento
+    userName =
+        ModalRoute.of(context)?.settings.arguments as String? ?? "Usuário";
+
+    // Inicializa as páginas com o nome do usuário
+    _pages = [
+      // Página Home - usando um widget simples para evitar recursão
+      Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Icon(Icons.home, size: 100, color: Colors.blue),
+            const SizedBox(height: 20),
+            const Text(
+              'Home Page',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              'Bem-vindo, $userName!',
+              style: const TextStyle(fontSize: 18, color: Colors.grey),
+            ),
+          ],
+        ),
       ),
-    ),
-    const FirstPage(),
-    const SecondPage(),
-  ];
+      FirstPage(userName: userName),
+      const SecondPage(),
+    ];
+  }
 
   int _selectedIndex = 0;
 

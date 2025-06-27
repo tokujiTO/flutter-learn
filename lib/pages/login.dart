@@ -19,7 +19,11 @@ class _LoginState extends State<Login> {
     });
 
     if (userController.text == "tiago" && passwordController.text == "senha") {
-      Navigator.pushNamed(context, "/home");
+      Navigator.pushReplacementNamed(
+        context,
+        "/home",
+        arguments: userController.text, // Passa o nome do usuário
+      );
     } else {
       setState(() {
         errorMessage = 'Credenciais inválidas.';
